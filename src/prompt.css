@@ -1,0 +1,30 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #000;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  animation: spin 1s linear infinite;
+}
+
+.submit-button {
+  padding: 10px 20px; /* Adjust padding as needed */
+  background-color: #000; /* Set background color */
+  color: #fff; /* Set text color */
+  border: none; /* Remove default button border */
+  border-radius: 20px; /* Set border-radius to round the button */
+  cursor: pointer; /* Set cursor to pointer on hover */
+}
+
+.submit-button:hover {
+  background-color: #333; /* Change background color on hover */
+}
