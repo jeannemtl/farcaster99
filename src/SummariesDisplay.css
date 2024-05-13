@@ -1,81 +1,41 @@
-.prompt-container {
-  display: flex;
-  margin: 20px 0;
-  width: 100%;
-}
+/* SummariesDisplay.css */
 
-.left-container {
-  flex: 1;
-  overflow-y: auto;
-  height: 100vh;
-  margin: 0 10px;
-  padding: 0 20px;
-  max-width: 400px;
-}
-
-.right-container {
-  flex: 1;
-  overflow-y: auto;
-  height: 100vh;
-  margin: 0 5px;
-  padding: 0 5px;
-}
-
-.left-container .sidebar {
-  padding: 5px;
+.summary-box {
+  padding: 20px;
   background-color: #fff;
+  margin-bottom: 20px; /* Add margin between summary boxes */
+  border: 1px solid #ccc; /* Add border for visual separation */
+  border-radius: 8px; /* Add border radius for rounded corners */
 }
 
-.right-container .main-content {
-  padding: 5px;
+.summary-box p {
+  margin: 0; /* Remove default margin for paragraphs */
+}
+
+/* SummariesDisplay.css */
+
+.summary-list {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+/* SummariesDisplay.css */
+
+.summary-box {
+  padding: 20px;
   background-color: #fff;
+  margin-bottom: 20px; /* Add margin between summary boxes */
+  border: 1px solid #ccc; /* Add border for visual separation */
+  border-radius: 8px; /* Add border radius for rounded corners */
 }
 
-.right-container .main-content textarea {
-  width: 100%;
-  border-radius: 15px;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  resize: vertical;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
+.summary-box p {
+  margin: 0; /* Remove default margin for paragraphs */
 }
 
-.right-container .main-content textarea:focus {
-  border-color: #00698f;
-  box-shadow: 0 0 10px rgba(0, 105, 143, 0.5);
-}
-
-.right-container .main-content .submit-button {
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.right-container .main-content .submit-button:hover {
-  background-color: #00698f;
-}
-
-.right-container .main-content .spinner {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 3px solid #ccc;
-  border-top: 3px solid #00698f;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.summary-list {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
 }
 
 .text-primary-foreground {
@@ -242,8 +202,4 @@ html {
     Consolas, "Liberation Mono", "Courier New", monospace;
   font-feature-settings: normal;
   font-variation-settings: normal;
-}
-
-.response-container {
-  transition: opacity 0.3s ease-in-out;
 }

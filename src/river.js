@@ -5,7 +5,7 @@ function River() {
 
     const generateApiKey = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/createApiKey", {
+            const response = await fetch("http://localhost:3002/api/createApiKey", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -26,14 +26,14 @@ function River() {
         }
     };
 
-    useEffect(() => {
-        generateApiKey();
-    }, []); // Empty dependency array ensures the effect runs only once
+    // useEffect(() => {
+    //    generateApiKey();
+    // }, []); // Empty dependency array ensures the effect runs only once
 
 
     const viewWalletAddress = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/getWallets", {
+            const response = await fetch("http://localhost:3002/api/getWallets", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -49,7 +49,7 @@ function River() {
 
     const sendTransaction = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/sendTransactions", {
+            const response = await fetch("http://localhost:3002/api/sendTransactions", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
