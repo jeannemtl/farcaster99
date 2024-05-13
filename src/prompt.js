@@ -165,101 +165,55 @@ export default function Prompt({ email }) {
 
     return (
 
-        <div className="prompt-container">
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                <div style={{ width: "100%", marginTop: "20px" }}>
+
+
+        <div className="prompt-container flex flex-col items-center mt-20" style={{ maxWidth: "600px" }}>
+            <div className="w-full max-w-xl px-5 xl:px-0">
+                <h1 className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]" style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
+                    ORCHID
+                </h1>
+                <h5 className="mb-4 text-center text-black">Mint your summary</h5>
+                <div className="flex flex-col max-w-full textarea-container">
 
                     {/* Display last 5 summaries */}
-                    <div className="z-10 w-full max-w-xl px-5 xl:px-0">
-                        <h1
-                            className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
-                            style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
+
+                    <h5 className="mb-4 text-center text-black">
+                        {" "}
+                        {/* Add a margin bottom for spacing */}
+                        Mint your summary
+                    </h5>
+                    <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", maxWidth: "100%" }}>
+                        <textarea
+                            value={inputPrompt}
+                            onChange={(e) => setInputPrompt(e.target.value)}
+                            rows={4} // initial number of rows
+                            style={{
+                                width: "100%",
+                                borderRadius: "15px",
+                                padding: "15px 10px",
+                                border: "1px solid #ccc",
+                                marginBottom: "10px",
+                                resize: "vertical", // allows users to resize the textarea vertically
+                            }}
+                        ></textarea>
+                        <button
+                            onClick={handleSubmit}
+                            className="group flex max-w-fit items-center justify-center rounded-full border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-black"
+                            style={{ alignSelf: "flex-start" }} // Align the button to the start of the flex container
                         >
-                            ORCHID
-                        </h1>
-                        <h5 className="mb-4 text-center text-black">
-                            {" "}
-                            {/* Add a margin bottom for spacing */}
-                            Mint your summary
-                        </h5>
-                        <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", maxWidth: "100%" }}>
-                            <textarea
-                                value={inputPrompt}
-                                onChange={(e) => setInputPrompt(e.target.value)}
-                                rows={4} // initial number of rows
-                                style={{
-                                    width: "100%",
-                                    borderRadius: "15px",
-                                    padding: "15px 10px",
-                                    border: "1px solid #ccc",
-                                    marginBottom: "10px",
-                                    resize: "vertical", // allows users to resize the textarea vertically
-                                }}
-                            ></textarea>
-                            <button
-                                onClick={handleSubmit}
-                                className="group flex max-w-fit items-center justify-center rounded-full border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-black"
-                                style={{ alignSelf: "flex-start" }} // Align the button to the start of the flex container
-                            >
-                                {isLoading ? (
-                                    // Spinner loader here
-                                    <span className="spinner"></span>
-                                ) : (
-                                    <span>Submit</span>
-                                )}
-                            </button>
-                        </div>
+                            {isLoading ? (
+                                // Spinner loader here
+                                <span className="spinner"></span>
+                            ) : (
+                                <span>Submit</span>
+                            )}
+                        </button>
+                    </div>
 
-                        {/* Display unminted and minted summaries */}
-                        {responses.map((response, index) => (
-                            // Check if the response is not minted
-                            !response.minted && (
-                                <div
-                                    key={index}
-                                    className="response-container"
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        marginBottom: "20px",
-                                    }}
-                                >
-                                    <div
-                                        style={{
-                                            border: "1px solid #ccc",
-                                            borderRadius: "15px",
-                                            padding: "15px",
-                                        }}
-                                    >
-                                        <div className="font-medium tracking-tight text-primary-foreground text-base leading-[14px]">
-                                            {response.summary}
-                                        </div>
-                                    </div>
-                                    <button
-                                        onClick={() => handleMint(response.id)}
-                                        style={{
-                                            padding: "10px 20px",
-                                            backgroundColor: "#007bff",
-                                            color: "#fff",
-                                            borderRadius: "8px",
-                                            border: "none",
-                                            cursor: "pointer",
-                                            marginTop: "10px" // Adjust as needed for spacing between response and mint button
-                                        }}
-                                    >
-                                        Mint
-                                    </button>
-                                </div>
-                            )
-                        ))}
-                        {/* Check if there are no unminted summaries */}
-                        {filteredSummaries.length === 0 && (
-                            <div className="font-medium tracking-tight text-primary-foreground text-base leading-[14px]">
-                                All summaries have been minted
-                            </div>
-                        )}
-
-                        {/* Display filtered summaries */}
-                        {filteredSummaries.map((response, index) => (
+                    {/* Display unminted and minted summaries */}
+                    {responses.map((response, index) => (
+                        // Check if the response is not minted
+                        !response.minted && (
                             <div
                                 key={index}
                                 className="response-container"
@@ -283,7 +237,6 @@ export default function Prompt({ email }) {
                                 <button
                                     onClick={() => handleMint(response.id)}
                                     style={{
-
                                         padding: "10px 20px",
                                         backgroundColor: "#007bff",
                                         color: "#fff",
@@ -296,16 +249,63 @@ export default function Prompt({ email }) {
                                     Mint
                                 </button>
                             </div>
-                        ))}
-
-                        {/* Display last 5 summaries */}
-                        <div className="font-medium response-container">
-                            <SummariesDisplay summaries={summaries} onMintButtonClick={handleMint} />
+                        )
+                    ))}
+                    {/* Check if there are no unminted summaries */}
+                    {filteredSummaries.length === 0 && (
+                        <div className="font-medium tracking-tight text-primary-foreground text-base leading-[14px]">
+                            All summaries have been minted
                         </div>
+                    )}
+
+                    {/* Display filtered summaries */}
+                    {filteredSummaries.map((response, index) => (
+                        <div
+                            key={index}
+                            className="response-container"
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                marginBottom: "20px",
+                            }}
+                        >
+                            <div
+                                style={{
+                                    border: "1px solid #ccc",
+                                    borderRadius: "15px",
+                                    padding: "15px",
+                                }}
+                            >
+                                <div className="font-medium tracking-tight text-primary-foreground text-base leading-[14px]">
+                                    {response.summary}
+                                </div>
+                            </div>
+                            <button
+                                onClick={() => handleMint(response.id)}
+                                style={{
+
+                                    padding: "10px 20px",
+                                    backgroundColor: "#007bff",
+                                    color: "#fff",
+                                    borderRadius: "8px",
+                                    border: "none",
+                                    cursor: "pointer",
+                                    marginTop: "10px" // Adjust as needed for spacing between response and mint button
+                                }}
+                            >
+                                Mint
+                            </button>
+                        </div>
+                    ))}
+
+                    {/* Display last 5 summaries */}
+                    <div className="font-medium response-container">
+                        <SummariesDisplay summaries={summaries} onMintButtonClick={handleMint} />
                     </div>
                 </div>
             </div>
         </div>
+
     );
 }
 
